@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
-RUN npm run build-base
+RUN npm run build
 
 # Stage 2
 FROM nginx:stable-alpine3.17
