@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build-base": "ng build --base-href=/vehicle/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

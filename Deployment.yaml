@@ -15,8 +15,9 @@ spec:
       containers:
       - name: ionic-vehicle
         image: ghcr.io/ionicerp/vehicle_fe_angular:latest
+        # imagePullPolicy: Always
         ports:
-        - containerPort: 8080
+        - containerPort: 80
       imagePullSecrets:
       - name: my-github-secret
       # - name: my-regcred
@@ -30,6 +31,6 @@ spec:
     app: ionic-vehicle
   ports:
   - protocol: TCP
-    port: 8080
-    targetPort: 8080
-  type: LoadBalancer
+    port: 80
+    targetPort: 80
+  # type: LoadBalancer
