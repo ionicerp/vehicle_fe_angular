@@ -8,4 +8,5 @@ RUN npm run build
 
 # Stage 2
 FROM nginx:stable-alpine3.17
-COPY --from=build /usr/src/app/dist/vehicle_fe_angular/ /usr/share/nginx/html
+RUN mkdir -p /usr/share/nginx/html/vehicle
+COPY --from=build /usr/src/app/dist/vehicle_fe_angular/ /usr/share/nginx/html/vehicle
