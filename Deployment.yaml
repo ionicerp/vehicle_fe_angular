@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ionic-deployment-vehicle
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ionic-vehicle
+  template:
+    metadata:
+      labels:
+        app: ionic-vehicle
+    spec:
+      containers:
+      - name: ionic-vehicle
+        image: ghcr.io/ionicerp/vehicle_fe_angular:latest
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: my-github-secret
+      # - name: my-regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ionic-service-vehicle
+spec:
+  selector:
+    app: ionic-vehicle
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+  type: LoadBalancer
