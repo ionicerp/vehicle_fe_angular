@@ -68,7 +68,8 @@
               "browserTarget": "vehicle_fe_angular:build:production"
             },
             "development": {
-              "browserTarget": "vehicle_fe_angular:build:development"
+              "browserTarget": "vehicle_fe_angular:build:development",
+              "servePath": "/vehicle/"
             }
           },
           "defaultConfiguration": "development"

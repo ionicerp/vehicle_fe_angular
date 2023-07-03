@@ -34,4 +34,8 @@ export class AuthenticateService {
   getAccessTokenSilently() {
     return this.authService.getAccessTokenSilently();
   }
+
+  getAccessTokenSilentlyWithAudience() {
+    return this.authService.getAccessTokenSilently({ authorizationParams: { audience: 'https://ionicerp.us.auth0.com/api/v2/' } })
+  }
 }
