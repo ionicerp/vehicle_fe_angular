@@ -17,7 +17,7 @@ import { AuthModule } from '@auth0/auth0-angular';
       domain: 'ionicerp.us.auth0.com',
       clientId: 'tYk0jDwd29OG9V8BmZJl3FoXaRr5y8GO',
       authorizationParams: {
-        redirect_uri: `${window.location.origin}/customer`,
+        redirect_uri: `${window.location.origin}/vehicle`,
         prompt: 'login'
       },
     }),
