@@ -29,7 +29,8 @@ export class AppComponent implements OnInit {
     const token = await firstValueFrom(this.authenticateService.getAccessTokenSilently());
     console.log(token);
 
-    const decodedToken = Buffer.from(token, 'base64').toString('utf-8');
+    const decodedToken = atob(token);
+
     const bearerToken = `Bearer ${decodedToken}`;
 
     console.log(bearerToken);
