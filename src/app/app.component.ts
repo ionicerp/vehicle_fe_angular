@@ -21,6 +21,11 @@ export class AppComponent implements OnInit {
   async initConfig() {
     const user = await firstValueFrom(this.authenticateService.user$);
     console.log(user);
+    const tokenClaim = await firstValueFrom(this.authenticateService.idTokenClaims$);
+    console.log(tokenClaim);
+    const token = await firstValueFrom(this.authenticateService.getAccessTokenSilently());
+    console.log(token);
+        
   }
 
   logout(): void {

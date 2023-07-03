@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AuthService, User } from '@auth0/auth0-angular';
+import { AuthService, IdToken, User } from '@auth0/auth0-angular';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
@@ -10,6 +10,7 @@ export class AuthenticateService {
   public user$: Observable<User | null | undefined> = this.authService.user$;
   public isLoading$: Observable<boolean> = this.authService.isLoading$;
   public isAuthenticated$: Observable<boolean> = this.authService.isAuthenticated$;
+  public idTokenClaims$: Observable<IdToken | null | undefined> = this.authService.idTokenClaims$;
 
   constructor(
     private authService: AuthService
@@ -28,5 +29,9 @@ export class AuthenticateService {
 
   loginWithRedirect() {
     return this.authService.loginWithRedirect();
+  }
+
+  getAccessTokenSilently() {
+    return this.authService.getAccessTokenSilently();
   }
 }
