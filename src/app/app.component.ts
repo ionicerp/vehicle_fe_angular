@@ -10,6 +10,8 @@ import { firstValueFrom } from 'rxjs/internal/firstValueFrom';
 export class AppComponent implements OnInit {
   title = 'vehicle_fe_angular';
 
+  token: string = '';
+
   constructor(
     public authenticateService: AuthenticateService,
   ) { }
@@ -25,6 +27,7 @@ export class AppComponent implements OnInit {
     console.log(tokenClaim);
     const token = await firstValueFrom(this.authenticateService.getAccessTokenSilently());
     console.log(token);
+    this.token = token;
         
   }
 
