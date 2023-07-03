@@ -28,9 +28,11 @@ export class AppComponent implements OnInit {
     console.log(tokenClaim);
     const token = await firstValueFrom(this.authenticateService.getAccessTokenSilently());
     console.log(token);
-    const decodedToken = jwt_decode(token);
-    console.log(decodedToken);
 
+    const decodedToken = Buffer.from(token, 'base64').toString('utf-8');
+    const bearerToken = `Bearer ${decodedToken}`;
+
+    console.log(bearerToken);
   }
 
   logout(): void {
