@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticateService } from './services/authenticate.service';
 import { firstValueFrom } from 'rxjs/internal/firstValueFrom';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-root',
@@ -27,8 +28,9 @@ export class AppComponent implements OnInit {
     console.log(tokenClaim);
     const token = await firstValueFrom(this.authenticateService.getAccessTokenSilently());
     console.log(token);
-    this.token = token;
-        
+    const decodedToken = jwt_decode(token);
+    console.log(decodedToken);
+
   }
 
   logout(): void {
