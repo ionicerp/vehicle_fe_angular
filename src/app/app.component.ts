@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
 
   logout(): void {
     if (confirm('Are you sure you want to logout?')) {
-      this.authenticateService.logout('messaging');
+      this.authenticateService.logout('vehicle');
     }
   }
 
