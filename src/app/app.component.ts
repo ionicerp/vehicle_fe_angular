@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticateService } from './services/authenticate.service';
 import { firstValueFrom } from 'rxjs/internal/firstValueFrom';
-import jwt_decode from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
+import { VehicleService } from './services/vehicle.service';
 
 @Component({
   selector: 'app-root',
@@ -15,29 +16,42 @@ export class AppComponent implements OnInit {
 
   constructor(
     public authenticateService: AuthenticateService,
+    public vehicleService: VehicleService
   ) { }
 
   ngOnInit(): void {
     this.initConfig();
 
-    // const oriToken = 'eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiaXNzIjoiaHR0cHM6Ly9pb25pY2VycC51cy5hdXRoMC5jb20vIn0..j55XV_Jbv722FJpk.LCxBkd7KcljnUgLgb5owDV9Mx5w2enxUOINrEOr49phIzZVu5OinUA1tED6l5m6Easa1FO2DNbSysq820dh--0j4StLV-ZkjkU90fD4ZFkgsDGlW69Gdtm7tDvDvCmxeAi0HoPFkAmH-ijqaVA9oj9isnrMCCuWmgOiyM6tKWBKpQoMPIVrvOb7fWh-E8H4MTZ_oMkZebD91wC1WSbHY2e-aLuYTQdEM5gcOdSY0vwv9oIjxBmJdCURqPwASOK50Rn8FAwZuA8tplKp607YnkdPV50lIqlahFqhEkp8ruU-N3AiJKmtU7m8_.12hveYVyCL6pighBguzlrQ';
     // console.log(oriToken);
     // const base64Url = oriToken.split('.')[1];
     // console.log(base64Url);
     // const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     // const decodedToken = decodeURIComponent(escape(window.atob(base64)));
     // console.log(decodedToken);
+    // const oriToken = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InVqV0ZwbFp6emw1dmVvUEZmQ3REbCJ9.eyJodHRwczovL2FwcC5pb25pY2VycC5jb20vYXBwX21ldGFkYXRhIjp7ImNvbXBhbnlJZHMiOlsiYXV0b2xpdmUiLCJpb25pY2VycCJdfSwiaXNzIjoiaHR0cHM6Ly9pb25pY2VycC51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjRhMjY1YjcxM2ExNTg1MjhiOTBlMGVlIiwiYXVkIjpbImh0dHBzOi8vaW9uaWNlcnAudXMuYXV0aDAuY29tL2FwaS92Mi8iLCJodHRwczovL2lvbmljZXJwLnVzLmF1dGgwLmNvbS91c2VyaW5mbyJdLCJpYXQiOjE2ODgzODI5MzYsImV4cCI6MTY4ODQ2OTMzNiwiYXpwIjoidFlrMGpEd2QyOU9HOVY4Qm1aSmwzRm9YYVJyNXk4R08iLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIn0.bs3tQ0V5K_itYmUHP8ROvz3iWljqLmmiMq_HrpJIeL2IQ7jCChu7WrrZCYt9GomK_lUZ2WbfEdqIntfCV5UYg4kGYL2ehQT0JcLwO3k0e84OrI1UGsNUCE6J2SOrENm6mQjNidTSqrAOVtbEDVmrUTHiyaSdCrkOthI3pA1Y2-vtrs3kiY0keFjIVxZcST4HF3tizu7b1VMrXe0nbShyTINcQGDesSGCjQcc4oo5901qyMjvG1IUo5nX_R6gAoGR13oCotGc-iEzKGzbgJp52-gcwKwMP39Cinyk2-1rqAqJ2XEPTa5mLL6zvpn5cw4TNeX8BojN0X-tNswwpo8h_g';
+    // const jwtDecodeToken: any = jwtDecode(oriToken);
+    // const userAppMetadata = jwtDecodeToken.user_app_metadata;
+    // console.log(jwtDecodeToken);
+
+
+    // const customMetadata = jwtDecodeToken.custom_claim;
+
   }
 
   async initConfig() {
-    const user = await firstValueFrom(this.authenticateService.user$);
-    console.log(user);
-    const tokenClaim = await firstValueFrom(this.authenticateService.idTokenClaims$);
-    console.log(tokenClaim);
-    const token = await firstValueFrom(this.authenticateService.getAccessTokenSilently());
-    console.log(token);
+    // const user = await firstValueFrom(this.authenticateService.user$);
+    // console.log(user);
+    // const tokenClaim = await firstValueFrom(this.authenticateService.idTokenClaims$);
+    // console.log(tokenClaim);
+    // const token = await firstValueFrom(this.authenticateService.getAccessTokenSilently());
+    // console.log(token);
     const tokenWithAud = await firstValueFrom(this.authenticateService.getAccessTokenSilentlyWithAudience());
     console.log(tokenWithAud);
+
+    const vehicle = await firstValueFrom(this.vehicleService.get(tokenWithAud ?? ''));
+
+    console.log(vehicle);
+
     // const decodedToken = atob(token);
 
     // const bearerToken = `Bearer ${decodedToken}`;
@@ -46,7 +60,7 @@ export class AppComponent implements OnInit {
 
 
 
-    
+
 
   }
 
