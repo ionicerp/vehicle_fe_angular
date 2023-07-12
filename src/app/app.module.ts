@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 
 import { AuthModule } from '@auth0/auth0-angular';
 
+import { HttpClientModule } from '@angular/common/http';
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -21,6 +24,7 @@ import { AuthModule } from '@auth0/auth0-angular';
         prompt: 'login'
       },
     }),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
