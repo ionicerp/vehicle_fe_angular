@@ -3,6 +3,7 @@ import { AuthenticateService } from './services/authenticate.service';
 import { firstValueFrom } from 'rxjs/internal/firstValueFrom';
 import jwtDecode from 'jwt-decode';
 import { VehicleService } from './services/vehicle.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
   title = 'vehicle_fe_angular';
 
   token: string = '';
+  environmentName: string = '';
 
   constructor(
     public authenticateService: AuthenticateService,
@@ -20,6 +22,7 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.environmentName = environment.ENVIRONMENT_NAME;
     this.initConfig();
 
     // console.log(oriToken);

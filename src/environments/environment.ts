@@ -1,3 +1,4 @@
 export const environment = {
-    API_URL: 'https://api.ionicerp.com'
+    API_URL: 'https://api.ionicerp.com',
+    ENVIRONMENT_NAME: 'default',
 };

@@ -20,7 +20,9 @@ spec:
         - containerPort: 80
         env:
         - name: API_URL
-        value: "https://app.ionicerp.com"
+          value: "https://app.ionicerp.com"
+        - name: ENVIRONMENT_NAME
+          value: "production"
       imagePullSecrets:
       - name: my-github-secret
       # - name: my-regcred
