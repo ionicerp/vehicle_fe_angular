@@ -13,4 +13,5 @@ COPY --from=build /usr/src/app/dist/vehicle_fe_angular/ /usr/share/nginx/html/ve
 
 COPY ./start.sh /usr/src/app/start.sh
 RUN chmod +x /usr/src/app/start.sh
-CMD ["/bin/sh", "/usr/src/app/start.sh"]
+# CMD ["/bin/sh", "/usr/src/app/start.sh"]
+CMD ["/bin/sh", "/usr/src/app/start.sh >> /usr/src/app/startup.log 2>&1"]
