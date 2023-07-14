@@ -10,3 +10,7 @@ RUN npm run build
 FROM nginx:stable-alpine3.17
 RUN mkdir -p /usr/share/nginx/html/vehicle
 COPY --from=build /usr/src/app/dist/vehicle_fe_angular/ /usr/share/nginx/html/vehicle
+
+COPY ./start.sh /usr/src/app/start.sh
+RUN chmod +x /usr/src/app/start.sh
+CMD ["/bin/sh", "/usr/src/app/start.sh"]

@@ -18,6 +18,9 @@ spec:
         # imagePullPolicy: Always
         ports:
         - containerPort: 80
+        env:
+        - name: API_URL
+        value: "https://app.ionicerp.com"
       imagePullSecrets:
       - name: my-github-secret
       # - name: my-regcred
