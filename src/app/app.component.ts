@@ -48,7 +48,9 @@ export class AppComponent implements OnInit {
     // const token = await firstValueFrom(this.authenticateService.getAccessTokenSilently());
     // console.log(token);
     const tokenWithAud = await firstValueFrom(this.authenticateService.getAccessTokenSilentlyWithAudience());
-    // console.log(tokenWithAud);
+
+    console.log('tokenWithAud');
+    console.log(tokenWithAud);
     const jwtDecodeToken: any = jwtDecode(tokenWithAud);
     // const userAppMetadata = jwtDecodeToken.user_app_metadata;
 
