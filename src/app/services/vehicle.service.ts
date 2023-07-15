@@ -15,6 +15,6 @@ export class VehicleService {
     const headers = new HttpHeaders({
       'Authorization': 'Bearer ' + accessToken
     });
-    return this.http.get(`${environment.API_URL}/vehicle/v1/private`, { headers });
+    return this.http.get(`${environment.API_URL}/vehicle/v1/get`, { headers });
   }
 }
