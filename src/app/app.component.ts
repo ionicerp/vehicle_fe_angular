@@ -47,33 +47,24 @@ export class AppComponent implements OnInit {
     // console.log(tokenClaim);
     // const token = await firstValueFrom(this.authenticateService.getAccessTokenSilently());
     // console.log(token);
-    const tokenWithAud = await firstValueFrom(this.authenticateService.getAccessTokenSilentlyWithAudience());
-
-    console.log('tokenWithAud');
-    console.log(tokenWithAud);
-    const jwtDecodeToken: any = jwtDecode(tokenWithAud);
-    // const userAppMetadata = jwtDecodeToken.user_app_metadata;
-
-    console.log('jwtDecodeToken');
-    console.log(jwtDecodeToken)
-
-    console.log('app_metadata');
-    console.log(jwtDecodeToken['https://app.ionicerp.com/app_metadata'])
-
-    const vehicle = await firstValueFrom(this.vehicleService.get(tokenWithAud ?? ''));
-    console.log('vehicle');
-    console.log(vehicle);
-
-    // const decodedToken = atob(token);
-
-    // const bearerToken = `Bearer ${decodedToken}`;
-
-    // console.log(bearerToken);
-
-
-
-
-
+    const isAuth = await firstValueFrom(this.authenticateService.isAuthenticated$);
+    if (isAuth) {
+      const tokenWithAud = await firstValueFrom(this.authenticateService.getAccessTokenSilentlyWithAudience());
+      console.log('tokenWithAud');
+      console.log(tokenWithAud);
+      const jwtDecodeToken: any = jwtDecode(tokenWithAud);
+      // const userAppMetadata = jwtDecodeToken.user_app_metadata;
+      console.log('jwtDecodeToken');
+      console.log(jwtDecodeToken)
+      console.log('app_metadata');
+      console.log(jwtDecodeToken['https://app.ionicerp.com/app_metadata'])
+      const vehicle = await firstValueFrom(this.vehicleService.get(tokenWithAud ?? ''));
+      console.log('vehicle');
+      console.log(vehicle);
+      // const decodedToken = atob(token);
+      // const bearerToken = `Bearer ${decodedToken}`;
+      // console.log(bearerToken);
+    }
   }
 
   logout(): void {
