@@ -7,11 +7,15 @@ import { AppComponent } from './app.component';
 import { AuthModule } from '@auth0/auth0-angular';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ModelComponent } from './components/model/model.component';
+import { BrandComponent } from './components/brand/brand.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ModelComponent,
+    BrandComponent
   ],
   imports: [
     BrowserModule,
