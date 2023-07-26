@@ -4,7 +4,6 @@ import { BrandComponent } from './components/brand/brand.component';
 import { ModelComponent } from './components/model/model.component';
 
 const routes: Routes = [
-  { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
   { path: 'model', loadChildren: () => import('./modules/model/model.module').then(m => m.ModelModule) },
   { path: 'brand', loadChildren: () => import('./modules/brand/brand.module').then(m => m.BrandModule) },
   { path: 'eagerbrand', component: BrandComponent },
