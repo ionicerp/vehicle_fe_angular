@@ -20,7 +20,12 @@
 
 # Stage 1
 FROM node:18.16.1-alpine AS build
+ARG NPM_AUTH_TOKEN
 WORKDIR /usr/src/app
+
+# Set up .npmrc with authentication token
+RUN echo "//npm.pkg.github.com/:_authToken=${NPM_AUTH_TOKEN}" > .npmrc
+
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .

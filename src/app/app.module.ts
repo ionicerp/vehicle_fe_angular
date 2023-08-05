@@ -9,6 +9,7 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { ModelComponent } from './components/model/model.component';
 import { BrandComponent } from './components/brand/brand.component';
+import { SharedFeModule } from '@ionicerp/shared-fe';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { BrandComponent } from './components/brand/brand.component';
         prompt: 'login'
       },
     }),
-    HttpClientModule
+    HttpClientModule,
+    SharedFeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
