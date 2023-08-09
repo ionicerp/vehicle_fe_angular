@@ -13,6 +13,10 @@ import { environment } from 'src/environments/environment';
 export class AppComponent implements OnInit {
   title = 'vehicle_fe_angular';
 
+  config: any = {};
+  app_name: string = 'Vehicle';
+  feature_name: string = '';
+
   token: string = '';
   environmentName: string = '';
 
@@ -23,7 +27,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.environmentName = environment.ENVIRONMENT_NAME;
-    this.initConfig();
+    this.configInit();
+    // this.initConfig();
 
     // console.log(oriToken);
     // const base64Url = oriToken.split('.')[1];
@@ -38,6 +43,31 @@ export class AppComponent implements OnInit {
 
     // const customMetadata = jwtDecodeToken.custom_claim;
 
+  }
+
+  async configInit() {
+    const user = await firstValueFrom(this.authenticateService.user$);
+    const app_metadata = user?.['app_metadata'];
+    console.log(app_metadata);
+
+    this.config = {
+      isAuthenticated: user ? true : false,
+      user: user ? { email: user?.email ?? '' } : undefined,
+      selectedCompanyDescription: 'B2All Solution Sales (+60193566238)',
+      whatsappBusinessAccounts: [],
+      companies: [
+        { routerLink: ['whatsapp', '345678'], itemDescription: 'B2All Solution Sales (+60193566238)' },
+        { routerLink: ['whatsapp', '112233'], itemDescription: 'B2All Solution Techs (+60193566238)' },
+      ],
+      featureMenus: [
+        { routerLink: ['data', 'query'], itemDescription: 'All vehicles' },
+        { routerLink: ['configuration'], itemDescription: 'Configuration' },
+      ],
+      serviceMenus: [
+        { itemDescription: 'WhatsApp', href: 'https://app.ionicerp.com/whatsapp', active: false },
+        { itemDescription: 'Appointment', href: 'https://app.ionicerp.com/appointment', active: true }
+      ]
+    };
   }
 
   async initConfig() {

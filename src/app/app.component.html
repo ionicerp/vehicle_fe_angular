@@ -4,6 +4,20 @@
   </div>
 </div>
 <ng-template #doneLoading>
+  <lib-nav-bar [config]="config" [appName]="app_name" [featureName]="feature_name" (loginButtonClicked)="login()"
+    (logoutButtonClicked)="logout()"></lib-nav-bar>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</ng-template>
+
+<!-- 
+<div *ngIf="authenticateService.isLoading$ | async; else doneLoading" class="container mt-2">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<ng-template #doneLoading>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
@@ -59,8 +73,6 @@
           previous
           versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
         <button class="btn btn-primary btn-lg" type="button">Example button</button>
-
-        <lib-nav-bar [appName]="'Hello World!'"></lib-nav-bar>
       </div>
     </div>
 
@@ -71,4 +83,4 @@
   <pre>{{ token }}</pre>
 
   <router-outlet></router-outlet>
-</ng-template>
+</ng-template> -->
