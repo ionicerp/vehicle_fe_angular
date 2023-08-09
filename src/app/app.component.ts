@@ -64,12 +64,12 @@ export class AppComponent implements OnInit {
         { routerLink: ['configuration'], itemDescription: 'Configuration' },
       ],
       serviceMenus: [
-        { itemDescription: 'Account', href: 'https://app.ionicerp.com/account', active: false },
-        { itemDescription: 'Appointment', href: 'https://app.ionicerp.com/appointment', active: false },
-        { itemDescription: 'Company', href: 'https://app.ionicerp.com/company', active: false },
-        { itemDescription: 'Reminder', href: 'https://app.ionicerp.com/reminder', active: false },
-        { itemDescription: 'Vehicle', href: 'https://app.ionicerp.com/vehicle', active: true },
-        { itemDescription: 'WhatsApp', href: 'https://app.ionicerp.com/whatsapp', active: false }
+        { itemDescription: 'Account', routerLink: 'switch-fe/account', active: false },
+        { itemDescription: 'Appointment', routerLink: 'switch-fe/appointment', active: false },
+        { itemDescription: 'Company', routerLink: 'switch-fe/company', active: false },
+        { itemDescription: 'Reminder', routerLink: 'switch-fe/reminder', active: false },
+        { itemDescription: 'Vehicle', routerLink: 'switch-fe/vehicle', active: true },
+        { itemDescription: 'WhatsApp', routerLink: 'switch-fe/whatsapp', active: false }
       ]
     };
   }
@@ -91,7 +91,7 @@ export class AppComponent implements OnInit {
       console.log('jwtDecodeToken');
       console.log(jwtDecodeToken)
       console.log('app_metadata');
-      console.log(jwtDecodeToken['https://app.ionicerp.com/app_metadata'])
+      console.log(jwtDecodeToken['switch-fe/app_metadata'])
       const vehicle = await firstValueFrom(this.vehicleService.get(tokenWithAud ?? ''));
       console.log('vehicle');
       console.log(vehicle);
