@@ -4,7 +4,7 @@
   </div>
 </div>
 <ng-template #doneLoading>
-  <lib-nav-bar [config]="config" [appName]="app_name" [featureName]="feature_name" (loginButtonClicked)="login()"
+  <lib-nav-bar [config]="config" [appName]="appName" [featureName]="featureName" (loginButtonClicked)="login()"
     (logoutButtonClicked)="logout()"></lib-nav-bar>
   <div class="container">
     <router-outlet></router-outlet>

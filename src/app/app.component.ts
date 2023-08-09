@@ -14,8 +14,8 @@ export class AppComponent implements OnInit {
   title = 'vehicle_fe_angular';
 
   config: any = {};
-  app_name: string = 'Vehicle';
-  feature_name: string = '';
+  appName: string = 'Vehicle';
+  featureName: string = '';
 
   token: string = '';
   environmentName: string = '';
@@ -60,12 +60,16 @@ export class AppComponent implements OnInit {
         { routerLink: ['whatsapp', '112233'], itemDescription: 'B2All Solution Techs (+60193566238)' },
       ],
       featureMenus: [
-        { routerLink: ['data', 'query'], itemDescription: 'All vehicles' },
+        { routerLink: ['data', 'list'], itemDescription: 'List all' },
         { routerLink: ['configuration'], itemDescription: 'Configuration' },
       ],
       serviceMenus: [
-        { itemDescription: 'WhatsApp', href: 'https://app.ionicerp.com/whatsapp', active: false },
-        { itemDescription: 'Appointment', href: 'https://app.ionicerp.com/appointment', active: true }
+        { itemDescription: 'Profile', href: 'https://app.ionicerp.com/profile', active: false },
+        { itemDescription: 'Appointment', href: 'https://app.ionicerp.com/appointment', active: false },
+        { itemDescription: 'Company', href: 'https://app.ionicerp.com/company', active: false },
+        { itemDescription: 'Reminder', href: 'https://app.ionicerp.com/reminder', active: false },
+        { itemDescription: 'Vehicle', href: 'https://app.ionicerp.com/vehicle', active: true },
+        { itemDescription: 'WhatsApp', href: 'https://app.ionicerp.com/whatsapp', active: false }
       ]
     };
   }
