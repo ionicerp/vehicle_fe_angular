@@ -10,13 +10,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModelComponent } from './components/model/model.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { SharedFeModule } from '@ionicerp/shared-fe';
+import { SwitchFeComponent } from './components/switch-fe/switch-fe.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ModelComponent,
-    BrandComponent
+    BrandComponent,
+    SwitchFeComponent
   ],
   imports: [
     BrowserModule,
