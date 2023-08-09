@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
         { routerLink: ['configuration'], itemDescription: 'Configuration' },
       ],
       serviceMenus: [
-        { itemDescription: 'Profile', href: 'https://app.ionicerp.com/profile', active: false },
+        { itemDescription: 'Account', href: 'https://app.ionicerp.com/account', active: false },
         { itemDescription: 'Appointment', href: 'https://app.ionicerp.com/appointment', active: false },
         { itemDescription: 'Company', href: 'https://app.ionicerp.com/company', active: false },
         { itemDescription: 'Reminder', href: 'https://app.ionicerp.com/reminder', active: false },
